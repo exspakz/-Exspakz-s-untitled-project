@@ -17,16 +17,17 @@ def save_chat_id(token, chat_id):
         response = post(CHAT_ID, json=data, headers=headers)
         if response.status_code == 200:
             logger.info(f'Successfully saved chat_id {chat_id} with token {token}')
-            return True
+            return True, None
         else:
             logger.warning(
                 f'Failed to save chat_id {chat_id} with token {token}. '
                 f'Status code: {response.status_code}'
             )
-            return False
+            return False, 'Failed to link the token. Please make sure it\'s valid.'
     except ConnectionError:
         logger.error(
             f'Failed to connect to the server when saving chat_id {chat_id} '
             f'with token {token}. Please check if the server is running.'
         )
-        return False
+        return False, 'Server is currently unreachable. Please try again later.'
+
