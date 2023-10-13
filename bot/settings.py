@@ -6,7 +6,7 @@ load_dotenv()
 
 # Common settings
 
-DEBUG = False
+DEBUG = os.environ.get('DEBUG', default=False)
 TOKEN = os.environ.get('TOKEN')
 PROTOCOL = 'https' if not DEBUG else 'http'
 
