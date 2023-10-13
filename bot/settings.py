@@ -4,12 +4,14 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-
 # Common settings
 
+DEBUG = False
 TOKEN = os.environ.get('TOKEN')
-API_DOMAIN = os.environ.get('API_DOMAIN', default='127.0.0.1:8000')
+PROTOCOL = 'https' if not DEBUG else 'http'
 
+API_DOMAIN_BASE = os.environ.get('API_DOMAIN', default='127.0.0.1:8000')
+API_DOMAIN = f'{PROTOCOL}://{API_DOMAIN_BASE}'
 
 # Logging settings
 

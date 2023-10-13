@@ -7,7 +7,7 @@ from .settings import API_DOMAIN
 
 logger = logging.getLogger(__name__)
 
-CHAT_ID = f'http://{API_DOMAIN}/telegram/chat_id/'
+CHAT_ID = f'{API_DOMAIN}/telegram/chat_id/'
 
 
 def save_chat_id(token, chat_id):
@@ -24,10 +24,7 @@ def save_chat_id(token, chat_id):
                 f'Status code: {response.status_code}'
             )
             return False, 'Failed to link the token. Please make sure it\'s valid.'
-    except ConnectionError:
-        logger.error(
-            f'Failed to connect to the server when saving chat_id {chat_id} '
-            f'with token {token}. Please check if the server is running.'
-        )
+    except ConnectionError as e:
+        logger.error(f'Failed to connect to the server: {e}')
         return False, 'Server is currently unreachable. Please try again later.'
 
