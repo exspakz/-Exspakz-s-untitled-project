@@ -8,7 +8,7 @@ load_dotenv()
 # Common settings
 
 TOKEN = os.environ.get('TOKEN')
-DOMAIN = os.environ.get('DOMAIN', default='127.0.0.1:8000')
+API_DOMAIN = os.environ.get('API_DOMAIN', default='127.0.0.1:8000')
 
 
 # Logging settings

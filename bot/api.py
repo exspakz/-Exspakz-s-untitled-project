@@ -3,11 +3,11 @@ import logging
 from requests import post
 from requests.exceptions import ConnectionError
 
-from .settings import DOMAIN
+from .settings import API_DOMAIN
 
 logger = logging.getLogger(__name__)
 
-CHAT_ID = f'http://{DOMAIN}/telegram/chat_id/'
+CHAT_ID = f'http://{API_DOMAIN}/telegram/chat_id/'
 
 
 def save_chat_id(token, chat_id):
