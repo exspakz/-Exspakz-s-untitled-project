@@ -1,9 +1,10 @@
 import telebot
-from api import save_chat_id
-from bot import settings
+
+from .api import save_chat_id
+from .settings import TOKEN
 
 
-bot = telebot.TeleBot(settings.TOKEN)
+bot = telebot.TeleBot(TOKEN)
 
 
 @bot.message_handler(commands=['start'])
