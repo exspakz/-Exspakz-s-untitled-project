@@ -1,4 +1,6 @@
 import logging
+import time
+
 import telebot
 
 from bot.api import save_chat_id
@@ -30,5 +32,10 @@ def handle_text(message):
 
 
 if __name__ == '__main__':
-    logger.info('Starting bot polling...')
-    bot.polling(none_stop=True)
+    while True:
+        try:
+            logger.info('Starting bot polling...')
+            bot.polling(none_stop=True)
+        except Exception as e:
+            logger.error(f'Bot polling failed: {e}')
+            time.sleep(15)
