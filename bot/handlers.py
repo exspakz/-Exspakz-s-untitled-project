@@ -27,7 +27,6 @@ def handle_text(message):
         bot.reply_to(message, 'Token is successfully linked with this chat.')
     else:
         bot.reply_to(message, error_message)
-        # logger.warning(f'Failed to link token for chat_id {chat_id}')
 
 
 if __name__ == '__main__':
